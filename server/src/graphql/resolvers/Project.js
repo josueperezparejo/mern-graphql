@@ -1,4 +1,5 @@
 import Project from "../../models/Project.js"
+import Task from "../../models/Task.js"
 
 export const resolvers = {
     Query: {
@@ -42,7 +43,21 @@ export const resolvers = {
             const { _id } = args
             try {
                 const deletedProject = await Project.findByIdAndDelete(_id)
+                if (!deletedProject) throw new Error('Project not found')
+
+                await Task.deleteMany({ projectId: deletedProject._id })
+                
                 return deletedProject
+            } catch (error) {
+                console.log(`Error: ${error.message}`)
+            }
+        },
+        updateProject: async (root, args, context) => {
+            const { _id } = args
+            try {
+                const updatedProject = await Project.findByIdAndUpdate(_id, args, { new: true })
+                if (!updatedProject) throw new Error('Project not found')
+                return updatedProject
             } catch (error) {
                 console.log(`Error: ${error.message}`)
             }

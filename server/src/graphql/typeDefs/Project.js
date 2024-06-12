@@ -9,6 +9,7 @@ export const typeDefs = gql`
     extend type Mutation {
         createProject(name: String!, description: String!):Project
         deleteProject(_id: ID!):Project
+        updateProject(name:String!, description:String!):Project
     }
 
     type Project {

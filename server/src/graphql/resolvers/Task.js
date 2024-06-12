@@ -28,10 +28,8 @@ export const resolvers = {
             try {
                 const projectFound = Project.findById(projectId)
 
-                if (!projectFound) {
-                    throw new Error('Project not found')
-                }
-
+                if (!projectFound) throw new Error('Project not found')
+    
                 const task = new Task({
                     title,
                     projectId
@@ -50,6 +48,16 @@ export const resolvers = {
             try {
                 const deletedTask = await Task.findByIdAndDelete(_id)
                 return deletedTask
+            } catch (error) {
+                console.log(`Error: ${error.message}`)
+            }
+        },
+        updateTask: async (root, args, context) => {
+            const { _id } = args
+            try {
+                const updatedTask = await Task.findByIdAndUpdate(_id, args, { new: true })
+                if (!updatedTask) throw new Error('Task not found')
+                return updatedTask
             } catch (error) {
                 console.log(`Error: ${error.message}`)
             }
