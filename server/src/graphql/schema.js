@@ -1,6 +1,8 @@
 import { gql } from "graphql-tag"
 import { resolvers as ProjectResolver } from "./resolvers/Project.js"
 import { typeDefs as ProjectTypeDefs } from "./typeDefs/Project.js"
+import { resolvers as TaskResolver } from "./resolvers/Task.js"
+import { typeDefs as TaskTypeDefs } from "./typeDefs/Task.js"
 
 const rootTypeDefs = gql`
     type Query {
@@ -24,5 +26,5 @@ const rootResolvers = {
     }
 }
 
-export const typeDefs = [rootTypeDefs, ProjectTypeDefs]
-export const resolvers = [rootResolvers, ProjectResolver]
+export const typeDefs = [rootTypeDefs, ProjectTypeDefs, TaskTypeDefs]
+export const resolvers = [rootResolvers, ProjectResolver, TaskResolver]
