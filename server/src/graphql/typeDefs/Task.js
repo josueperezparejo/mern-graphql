@@ -2,12 +2,14 @@ import gql from "graphql-tag";
 
 export const typeDefs = gql`
     extend type Query {
-        tasks: [Task]        
+        tasks: [Task]  
+        task(_id: ID!):Task
+
     }
 
     extend type Mutation {
         createTask(title: String!, projectId: ID!):Task
-
+        deleteTask(_id: ID!):Task
     }
 
     type Task {

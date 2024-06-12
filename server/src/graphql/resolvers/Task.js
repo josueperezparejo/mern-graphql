@@ -10,6 +10,15 @@ export const resolvers = {
             } catch (error) {
                 console.log(`Error: ${error.message}`)
             }
+        },
+        task: async (root, args, context) => {
+            const { _id } = args
+            try {
+                const task = await Task.findById(_id)
+                return task
+            } catch (error) {
+                console.log(`Error: ${error.message}`)
+            }
         }
     },
     Mutation: {
@@ -32,6 +41,15 @@ export const resolvers = {
 
                 return savedTask
 
+            } catch (error) {
+                console.log(`Error: ${error.message}`)
+            }
+        },
+        deleteTask: async (root, args, context) => {
+            const { _id } = args
+            try {
+                const deletedTask = await Task.findByIdAndDelete(_id)
+                return deletedTask
             } catch (error) {
                 console.log(`Error: ${error.message}`)
             }

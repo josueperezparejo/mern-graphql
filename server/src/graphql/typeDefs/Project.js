@@ -3,10 +3,12 @@ import gql from "graphql-tag";
 export const typeDefs = gql`
     extend type Query {
         projects: [Project]
+        project(_id: ID!):Project
     }
 
     extend type Mutation {
         createProject(name: String!, description: String!):Project
+        deleteProject(_id: ID!):Project
     }
 
     type Project {

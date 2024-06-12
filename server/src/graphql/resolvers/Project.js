@@ -9,6 +9,15 @@ export const resolvers = {
             } catch (error) {
                 console.log(`Error: ${error.message}`)
             }
+        },
+        project: async (root, args, context) => {
+            const { _id } = args
+            try {
+                const project = await Project.findById(_id)
+                return project
+            } catch (error) {
+                console.log(`Error: ${error.message}`)
+            }
         }
     },
     Mutation: {
@@ -25,6 +34,15 @@ export const resolvers = {
 
                 return savedProject
 
+            } catch (error) {
+                console.log(`Error: ${error.message}`)
+            }
+        },
+        deleteProject: async (root, args, context) => {
+            const { _id } = args
+            try {
+                const deletedProject = await Project.findByIdAndDelete(_id)
+                return deletedProject
             } catch (error) {
                 console.log(`Error: ${error.message}`)
             }
