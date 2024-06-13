@@ -12,7 +12,7 @@ export const Error404Page = () => {
             <span className="sr-only">Error</span>404
           </h2>
           <p className="text-2xl md:text-3xl">Sorry, we couldn't find this page.</p>
-          <button onClick={() => navigate('/', { replace: true })} className="px-8 py-4 text-xl font-semibold rounded bg-green-500 text-gray-50 hover:text-gray-200" size="lg" >Back to Nexus it</button>
+          <button onClick={() => navigate('/projects', { replace: true })} className="px-8 py-4 text-xl font-semibold rounded bg-green-500 text-gray-50 hover:text-gray-200" size="lg" >Back to Nexus it</button>
         </div>
       </div>
     </section>

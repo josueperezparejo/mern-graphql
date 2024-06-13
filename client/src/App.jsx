@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom'
-import { Error404Page, Home } from './pages'
+import { Error404Page, Home, Projects } from './pages'
 
 function App() {
 
@@ -7,6 +7,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/projects" element={<Projects />} />
 
         <Route path="/404" element={<Error404Page />} />
 

@@ -1,5 +1,10 @@
+import { ProjectForm, ProjectList } from "../components"
+
 export const Projects = () => {
   return (
-    <div>Projects</div>
+    <div>
+        <ProjectForm />
+        <ProjectList />
+    </div>
   )
 }
