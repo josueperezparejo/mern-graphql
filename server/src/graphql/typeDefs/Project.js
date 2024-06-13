@@ -17,6 +17,7 @@ export const typeDefs = gql`
         name: String,
         description: String,
         createdAt: String,
-        updatedAt: String
+        updatedAt: String,
+        tasks: [Task]
     }
 `

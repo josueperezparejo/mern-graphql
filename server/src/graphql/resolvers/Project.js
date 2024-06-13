@@ -46,7 +46,7 @@ export const resolvers = {
                 if (!deletedProject) throw new Error('Project not found')
 
                 await Task.deleteMany({ projectId: deletedProject._id })
-                
+
                 return deletedProject
             } catch (error) {
                 console.log(`Error: ${error.message}`)
@@ -58,6 +58,18 @@ export const resolvers = {
                 const updatedProject = await Project.findByIdAndUpdate(_id, args, { new: true })
                 if (!updatedProject) throw new Error('Project not found')
                 return updatedProject
+            } catch (error) {
+                console.log(`Error: ${error.message}`)
+            }
+        }
+    },
+    Project: {
+        tasks: async (root, args, context) => {
+            const { _id } = root
+
+            try {
+                const tasks = await Task.find({projectId: _id})
+                return tasks
             } catch (error) {
                 console.log(`Error: ${error.message}`)
             }
